@@ -22,6 +22,7 @@ jobs:
       id: set-result
       with:
         result-encoding: string
+        debug: true
         script: |
           github.rest.actions.downloadArtifact({
             owner: 'checkitsam',
