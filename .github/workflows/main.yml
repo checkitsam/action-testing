@@ -39,4 +39,4 @@ jobs:
         name: test-file
 
     - name: List and cat
-      run: ls -lt && unzip test && ls -lt && cat test
+      run: ls -lt && cat test
