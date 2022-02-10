@@ -12,7 +12,8 @@ jobs:
   testing2:
     name: 'testing2'
     runs-on: ubuntu-latest
-
+    env:
+      artifact_id: ${{ inputs.artifact_id }}
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -24,10 +25,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: List and cat
+      run: echo $artifact_id && echo ${{ env }}
+
     - uses: actions/github-script@v5
-      id: set-result
-      env:
-        artifact_id: ${{ inputs.artifact_id }}
       with:
         result-encoding: string
         debug: true
@@ -36,8 +37,8 @@ jobs:
           const fs = require('fs');
           var artifact_id = process.env.artifact_id || 'unset'
           const download = await github.rest.actions.downloadArtifact({
-            owner: 'checkitsam',
-            repo: 'action-testing',
+            owner: context.repo.owner,
+            repo: context.repo.repo,
             artifact_id: artifact_id,
             archive_format: 'zip'
           });
