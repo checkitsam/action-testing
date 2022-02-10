@@ -1,7 +1,6 @@
 name: 'Testing2'
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       artifact_id:
@@ -14,7 +13,7 @@ jobs:
     name: 'testing2'
     runs-on: ubuntu-latest
     env:
-      artifact_id: ${{ inputs.artifact_id }}
+      artifact_id: ${{ github.event.inputs.artifact_id }}
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -25,9 +24,6 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v2
-
-    - name: List and cat
-      run: echo ${{ github.event.inputs.artifact_id }} echo ${{ env.artifact_id }} && echo $artifact_id && echo ${{ env }}
 
     - uses: actions/github-script@v5
       with:
