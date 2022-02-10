@@ -37,7 +37,7 @@ jobs:
           const download = await github.rest.actions.downloadArtifact({
             owner: 'checkitsam',
             repo: 'action-testing',
-            artifact_id: '${{ env.artifact_id }}',
+            artifact_id: process.env.artifact_id',
             archive_format: 'zip'
           });
           const file = fs.createWriteStream("artifact.zip");
