@@ -21,12 +21,7 @@ jobs:
     - uses: actions/github-script@v5
       with:
         script: |
-          github.rest.actions.downloadArtifact({
-            'checkitsam',
-            'action-testing',
-            '161664551',
-            'zip'
-          });
+          github.rest.actions.downloadArtifact({'checkitsam','action-testing','161664551','zip'});
 
     - name: List and cat
       run: ls -lt && cat test
