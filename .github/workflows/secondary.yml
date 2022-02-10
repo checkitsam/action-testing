@@ -5,6 +5,7 @@ on:
     inputs:
       artifact_id:
         required: true
+        type: string
 
 
 jobs:
