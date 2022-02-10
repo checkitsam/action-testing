@@ -27,6 +27,7 @@ jobs:
             artifact_id: '161667560',
             archive_format: 'zip',
           });
+          console.log(github.result)
 
     - name: List and cat
       run: ls -lt && cat test
