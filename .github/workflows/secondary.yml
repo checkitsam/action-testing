@@ -34,7 +34,7 @@ jobs:
         script: |
           const https = require('https');
           const fs = require('fs');
-          var artifact_id = process.env.artifact_id
+          var artifact_id = process.env.artifact_id || 'unset'
           const download = await github.rest.actions.downloadArtifact({
             owner: 'checkitsam',
             repo: 'action-testing',
