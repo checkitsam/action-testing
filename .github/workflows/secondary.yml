@@ -18,10 +18,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: 'Download Artifact'
-      uses: actions/download-artifact@v2
+    - uses: actions/github-script@v5
       with:
-        name: test-file
+        script: |
+          octokit.rest.actions.downloadArtifact({
+            checkitsam,
+            action-testing,
+            161664551,
+            archive_format
+          });
 
     - name: List and cat
       run: ls -lt && cat test
