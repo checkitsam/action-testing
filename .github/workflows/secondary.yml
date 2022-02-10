@@ -33,7 +33,7 @@ jobs:
             archive_format: 'zip'
           });
           const file = fs.createWriteStream("artifact.zip");
-          const request = http.get(download.url, function(response) {
+          const request = https.get(download.url, function(response) {
             response.pipe(file);
           });
 
