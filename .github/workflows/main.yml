@@ -20,7 +20,7 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Create file
-      run: echo "abc" > test
+      run: apt-get update -y && apt-get install -y unzip && echo "abc" > test
 
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v2
@@ -40,4 +40,4 @@ jobs:
         path: test
 
     - name: List and cat
-      run: ls -lt && cat test*
+      run: ls -lt && unzip test && ls -lt && cat test
