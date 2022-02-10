@@ -34,10 +34,11 @@ jobs:
         script: |
           const https = require('https');
           const fs = require('fs');
+          var artifact_id = process.env.artifact_id
           const download = await github.rest.actions.downloadArtifact({
             owner: 'checkitsam',
             repo: 'action-testing',
-            artifact_id: process.env.artifact_id,
+            artifact_id: ${artifact_id},
             archive_format: 'zip'
           });
           const file = fs.createWriteStream("artifact.zip");
