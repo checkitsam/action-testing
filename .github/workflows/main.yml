@@ -30,13 +30,5 @@ jobs:
         retention-days: 1
         if-no-files-found: error
 
-    - name: remove from local
-      run: rm test
-
-    - name: 'Download Artifact'
-      uses: actions/download-artifact@v2
-      with:
-        name: test-file
-
-    - name: List and cat
-      run: ls -lt && cat test
+    - name: Review plan and grab artifact_id for apply workflow
+      run: echo "Review plan and grab artifact_id for apply workflow"

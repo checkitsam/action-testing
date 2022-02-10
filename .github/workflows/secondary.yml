@@ -1,7 +1,11 @@
 name: 'Testing2'
 
 on:
-  push:
+  workflow_dispatch:
+    inputs:
+      artifact_id:
+        required: true
+
 
 jobs:
   testing2:
@@ -29,7 +33,7 @@ jobs:
           const download = await github.rest.actions.downloadArtifact({
             owner: 'checkitsam',
             repo: 'action-testing',
-            artifact_id: '161667560',
+            artifact_id: '${{ inputs.artifact_id }}',
             archive_format: 'zip'
           });
           const file = fs.createWriteStream("artifact.zip");
