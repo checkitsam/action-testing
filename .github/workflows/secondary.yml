@@ -24,7 +24,7 @@ jobs:
           github.rest.actions.downloadArtifact({
             'checkitsam',
             'action-testing',
-            161664551,
+            '161664551',
             'zip'
           });
 
