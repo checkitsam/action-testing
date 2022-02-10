@@ -22,8 +22,8 @@ jobs:
       with:
         script: |
           github.rest.actions.downloadArtifact({
-            owner: 'elektron-technology',
-            repo: 'vpc-terraform',
+            owner: 'checkitsam',
+            repo: 'action-testing',
             artifact_id: '161667560',
             archive_format: 'zip',
           });
