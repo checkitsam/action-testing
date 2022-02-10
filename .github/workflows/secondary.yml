@@ -1,0 +1,27 @@
+name: 'Testing2'
+
+on:
+  push:
+
+jobs:
+  testing2:
+    name: 'testing2'
+    runs-on: ubuntu-latest
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: 'Download Artifact'
+      uses: actions/download-artifact@v2
+      with:
+        name: test-file
+
+    - name: List and cat
+      run: ls -lt && cat test
