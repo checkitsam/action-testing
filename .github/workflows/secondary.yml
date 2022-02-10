@@ -24,16 +24,19 @@ jobs:
         result-encoding: string
         debug: true
         script: |
+          const https = require('https');
+          const fs = require('fs');
           const download = await github.rest.actions.downloadArtifact({
             owner: 'checkitsam',
             repo: 'action-testing',
             artifact_id: '161667560',
             archive_format: 'zip'
           });
-          console.log(download.url)
+          const file = fs.createWriteStream("artifact.zip");
+          const request = http.get(download.url, function(response) {
+            response.pipe(file);
+          });
 
-    - name: Get result
-      run: echo "${{steps.set-result.outputs.result}}"
 
     - name: List and cat
-      run: ls -lt && cat test
+      run: ls -lt && unzip artifact.zip && cat test
