@@ -1,0 +1,39 @@
+name: 'Testing'
+
+on:
+  push:
+
+jobs:
+  testing1:
+    name: 'testing1'
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # Generates an execution plan for Terraform
+    - name: Create file
+      run: echo "abc" > test
+
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-file
+        path: test
+        retention-days: 1
+        if-no-files-found: error
+
+    - name: 'Download Artifact'
+      uses: actions/download-artifact@v2
+      with:
+        name: test-file
+        path: test
+
+    - name: List and cat
+      run: ls -lt && cat test*
