@@ -1,7 +1,8 @@
 name: 'Testing'
 
 on:
-  push:
+  #push:
+  workflow_dispatch:
 
 jobs:
   testing1:
