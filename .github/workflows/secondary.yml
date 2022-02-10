@@ -21,13 +21,13 @@ jobs:
     - uses: actions/github-script@v5
       id: set-result
       with:
+        result-encoding: string
         script: |
           github.rest.actions.downloadArtifact({
             owner: 'checkitsam',
             repo: 'action-testing',
             artifact_id: '161667560',
-            archive_format: 'zip',
-            result-encoding: string
+            archive_format: 'zip'
           });
 
     - name: Get result
