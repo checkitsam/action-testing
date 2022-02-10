@@ -30,6 +30,9 @@ jobs:
         retention-days: 1
         if-no-files-found: error
 
+    - name: remove from local
+      run: rm test
+
     - name: 'Download Artifact'
       uses: actions/download-artifact@v2
       with:
