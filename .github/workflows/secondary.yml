@@ -13,6 +13,9 @@ jobs:
     name: 'testing2'
     runs-on: ubuntu-latest
 
+    env:
+      artifact_id: ${{ inputs.artifact_id }}
+
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
@@ -34,7 +37,7 @@ jobs:
           const download = await github.rest.actions.downloadArtifact({
             owner: 'checkitsam',
             repo: 'action-testing',
-            artifact_id: '${{ inputs.artifact_id }}',
+            artifact_id: '${{ env.artifact_id }}',
             archive_format: 'zip'
           });
           const file = fs.createWriteStream("artifact.zip");
