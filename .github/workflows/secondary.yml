@@ -13,8 +13,6 @@ jobs:
     name: 'testing2'
     runs-on: ubuntu-latest
 
-    env:
-      artifact_id: ${{ inputs.artifact_id }}
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -28,6 +26,8 @@ jobs:
 
     - uses: actions/github-script@v5
       id: set-result
+      env:
+        artifact_id: ${{ inputs.artifact_id }}
       with:
         result-encoding: string
         debug: true
