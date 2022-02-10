@@ -24,12 +24,13 @@ jobs:
         result-encoding: string
         debug: true
         script: |
-          await github.rest.actions.downloadArtifact({
+          const download = github.rest.actions.downloadArtifact({
             owner: 'checkitsam',
             repo: 'action-testing',
             artifact_id: '161667560',
             archive_format: 'zip'
           });
+          console.log(download)
 
     - name: Get result
       run: echo "${{steps.set-result.outputs.result}}"
