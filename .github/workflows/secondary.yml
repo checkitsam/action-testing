@@ -24,7 +24,7 @@ jobs:
         result-encoding: string
         debug: true
         script: |
-          github.rest.actions.downloadArtifact({
+          await github.rest.actions.downloadArtifact({
             owner: 'checkitsam',
             repo: 'action-testing',
             artifact_id: '161667560',
