@@ -22,10 +22,10 @@ jobs:
       with:
         script: |
           octokit.rest.actions.downloadArtifact({
-            checkitsam,
-            action-testing,
+            'checkitsam',
+            'action-testing',
             161664551,
-            archive_format
+            'zip'
           });
 
     - name: List and cat
